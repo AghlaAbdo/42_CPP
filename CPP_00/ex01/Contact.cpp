@@ -1,17 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/29 11:03:40 by aaghla            #+#    #+#             */
+/*   Updated: 2024/12/29 11:57:45 by aaghla           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "PhoneBook.hpp"
 
-string  strtrim(string str)
+std::string  strtrim(std::string str)
 {
-	int start;
-	int end;
+	size_t start;
+	size_t end;
 
 	start = str.find_first_not_of(" \n\t\r\f\v");
 	end = str.find_last_not_of(" \n\t\r\f\v");
-	if (start == string::npos && end == string::npos)
+	if (start == std::string::npos || end == std::string::npos)
+		return ("");
+	if (start == std::string::npos && end == std::string::npos)
 		return (str);
-	else if (end == string::npos)
+	else if (end == std::string::npos)
 		return (str.substr(start));
-	else if (start == string::npos)
+	else if (start == std::string::npos)
 		return (str.substr(0, end + 1));
 	else
 		return (str.substr(start, end + 1));
@@ -25,59 +39,69 @@ void    Contact::fillContact()
 	phoneNumber.clear();
 	darkestSecret.clear();
 	while (!firstName[0]) {
-		cout << "Enter first name: ";
-		getline(std::cin, firstName);
+		if (!std::cin.eof())
+			std::cout << "Enter first name: ";
+		if (!std::getline(std::cin, firstName))
+			exit(0);
+		firstName = strtrim(firstName);
 	}
 	while (!lastName[0]) {
-		cout << "Enter last name: ";
-		getline(std::cin, lastName);
+		if (!std::cin.eof())
+			std::cout << "Enter last name: ";
+		if (!std::getline(std::cin, lastName))
+			exit(0);
+		lastName = strtrim(lastName);
 	}
 	while (!nickName[0]) {
-		cout << "Enter nickname: ";
-		getline(std::cin, nickName);
+		if (!std::cin.eof())
+			std::cout << "Enter nickname: ";
+		if (!std::getline(std::cin, nickName))
+			exit(0);
+		nickName = strtrim(nickName);
 	}
 	while (!phoneNumber[0]) {
-		cout << "Enter phone number: ";
-		getline(std::cin, phoneNumber);
+		if (!std::cin.eof())
+			std::cout << "Enter phone number: ";
+		if (!std::getline(std::cin, phoneNumber))
+			exit(0);
+		phoneNumber = strtrim(phoneNumber);
 	}
 	while (!darkestSecret[0]) {
-		cout << "Enter darkest secret: ";
-		getline(std::cin, darkestSecret);
+		if (!std::cin.eof())
+			std::cout << "Enter darkest secret: ";
+		if (!std::getline(std::cin, darkestSecret))
+			exit(0);
+		darkestSecret = strtrim(darkestSecret);
 	}
-	firstName = strtrim(firstName);
-	lastName = strtrim(lastName);
-	nickName = strtrim(nickName);
-	phoneNumber = strtrim(phoneNumber);
-	darkestSecret = strtrim(darkestSecret);
 }
 
 void    Contact::search()
 {
-	cout << "first name:" << firstName << endl;
-	cout << "last name: " << lastName << endl;
+	std::cout << "first name:" << firstName << "\n";
+	std::cout << "last name: " << lastName << "\n";
 }
 
-string	Contact::getFirstName()
+std::string	Contact::getFirstName()
 {
 	return (firstName);
 }
 
-string	Contact::getLastName()
+std::string	Contact::getLastName()
 {
 	return (lastName);
 }
 
-string	Contact::getNickname()
+std::string	Contact::getNickname()
 {
 	return (nickName);
 }
 
-string	Contact::getPhoneNumber()
+std::string	Contact::getPhoneNumber()
 {
 	return (phoneNumber);
 }
 
-string	Contact::getSecret()
+std::string	Contact::getSecret()
 {
 	return (darkestSecret);
 }

@@ -1,16 +1,18 @@
-NAME	= megaphone
+NAME	= Accounting
 CC		= c++
 FLAGS	= -Wall -Wextra -Werror
 
-SRC		= megaphone.cpp
+SRC		= Account.cpp	\
+		tests.cpp
+
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(FLAGS) -o $@ $^
+	$(CC) $(FLAGS) $^ -o $@
 
-%.o: %.cpp
+%.o: %.cpp Account.hpp
 	$(CC) $(FLAGS) -c $< -o $@
 
 clean:
@@ -21,4 +23,6 @@ fclean: clean
 
 re: fclean all
 
-.PHONY : all clean fclean re
+mc: all clean
+
+.PHONY : all clean fclean re mc

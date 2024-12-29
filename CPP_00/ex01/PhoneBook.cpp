@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/29 11:03:45 by aaghla            #+#    #+#             */
+/*   Updated: 2024/12/29 11:55:37 by aaghla           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook()
@@ -12,7 +24,7 @@ void    PhoneBook::addContact()
 		lastIndex++;
 }
 
-void	PhoneBook::printFirstName(Contact contact)
+void	PhoneBook::printFirstName(Contact contact) const
 {
 	int	len;
 	int	j;
@@ -23,21 +35,21 @@ void	PhoneBook::printFirstName(Contact contact)
 		j = -1;
 		while (++j < 9)
 		{
-			cout << contact.getFirstName()[j];
+			std::cout << contact.getFirstName()[j];
 		}
-		cout << ".";
+		std::cout << ".";
 	}
 	else
 	{
 		j = -1;
 		while (++j < 10 - len)
-			cout << " ";
-		cout << contact.getFirstName();
+			std::cout << " ";
+		std::cout << contact.getFirstName();
 	}
-	cout << "|";
+	std::cout << "|";
 }
 
-void	PhoneBook::printLastName(Contact contact)
+void	PhoneBook::printLastName(Contact contact) const
 {
 	int	len;
 	int	j;
@@ -48,22 +60,22 @@ void	PhoneBook::printLastName(Contact contact)
 		j = -1;
 		while (++j < 9)
 		{
-			cout << contact.getLastName()[j];
+			std::cout << contact.getLastName()[j];
 		}
-		cout << ".";
+		std::cout << ".";
 	}
 	else
 	{
 		j = -1;
 		while (++j < 10 - len)
-			cout << " ";
-		cout << contact.getLastName();
+			std::cout << " ";
+		std::cout << contact.getLastName();
 	}
-	cout << "|";
+	std::cout << "|";
 
 }
 
-void	PhoneBook::printNickname(Contact contact)
+void	PhoneBook::printNickname(Contact contact) const
 {
 	int	len;
 	int	j;
@@ -74,36 +86,36 @@ void	PhoneBook::printNickname(Contact contact)
 		j = -1;
 		while (++j < 9)
 		{
-			cout << contact.getNickname()[j];
+			std::cout << contact.getNickname()[j];
 		}
-		cout << ".";
+		std::cout << ".";
 	}
 	else
 	{
 		j = -1;
 		while (++j < 10 - len)
-			cout << " ";
-		cout << contact.getNickname();
+			std::cout << " ";
+		std::cout << contact.getNickname();
 	}
 }
 
-void	PhoneBook::printContact(Contact contact)
+void	PhoneBook::printContact(Contact contact) const
 {
-	cout << "First name: " << contact.getFirstName() << endl;
-	cout << "Last name: " << contact.getLastName() << endl;
-	cout << "Nickname: " << contact.getNickname() << endl;
-	cout << "Phone number: " << contact.getPhoneNumber() << endl;
-	cout << "Darkest secret: " << contact.getSecret() << endl;
+	std::cout << "First name: " << contact.getFirstName() << "\n";
+	std::cout << "Last name: " << contact.getLastName() << "\n";
+	std::cout << "Nickname: " << contact.getNickname() << "\n";
+	std::cout << "Phone number: " << contact.getPhoneNumber() << "\n";
+	std::cout << "Darkest secret: " << contact.getSecret() << "\n";
 }
 
 void	PhoneBook::searchContact()
 {
-	string str;
+	std::string str;
 	int		index;
 	int		i;
 
 	if (!contacts[0].getFirstName()[0]) {
-		cout << "Empty contact" << endl;
+		std::cout << "Empty contact" << "\n";
 		return ;
 	}
 	i = -1;
@@ -111,25 +123,27 @@ void	PhoneBook::searchContact()
 	{
 		if (!contacts[i].getFirstName()[0])
 			break ;
-		cout << "         " << i + 1 << "|";
+		std::cout << "         " << i + 1 << "|";
 		printFirstName(contacts[i]);
 		printLastName(contacts[i]);
 		printNickname(contacts[i]);
-		cout << endl;
+		std::cout << "\n";
 	}
 	while (!str[0]) {
-		cout << "Enter contact index: ";
-		getline(std::cin, str);
+		std::cout << "Enter contact index: ";
+		if (!getline(std::cin, str))
+			exit(0);
 	}
-	if (str.find_first_not_of("0123456789") != -1)
+	if (str.find_first_not_of("0123456789") != std::string::npos)
 	{
-		cout << "invalid index number" << endl;
+		if (!std::cin.eof())
+			std::cout << "invalid index number" << "\n";
 		return ;
 	}
 	index = std::stoi(str);
-	cout << index << endl;
+	std::cout << index << "\n";
 	if (index == 0 || index > 8 || !contacts[index -1].getFirstName()[0])
-		cout << "Index out of range" << endl;
+		std::cout << "Index out of range" << "\n";
 	else {
 		printContact(contacts[index - 1]);
 	}

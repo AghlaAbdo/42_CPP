@@ -1,5 +1,5 @@
 NAME	= MyContacts
-CC		= g++
+CC		= c++
 FLAGS	= -Wall -Wextra -Werror
 
 SRC		= main.cpp		\
@@ -10,10 +10,10 @@ OBJ = $(SRC:.cpp=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(FLAGS) -o $@ $^
+	$(CC) $(FLAGS) $^ -o $@
 
 %.o: %.cpp Contact.hpp PhoneBook.hpp
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(FLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJ)
@@ -23,4 +23,6 @@ fclean: clean
 
 re: fclean all
 
-.PHONY : all clean fclean re
+mc: all clean
+
+.PHONY : all clean fclean re mc

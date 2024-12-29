@@ -6,39 +6,30 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 18:09:10 by aaghla            #+#    #+#             */
-/*   Updated: 2024/12/25 15:31:13 by aaghla           ###   ########.fr       */
+/*   Updated: 2024/12/29 11:53:31 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
 #include "PhoneBook.hpp"
-
-using std::cout;
-using std::endl;
-using std::string;
-using std::getline;
-
-
-
-
 
 int main(void)
 {
 	PhoneBook	phoneBook;
-	string		line;
-	int			i;
+	std::string	line;
 
 	while (1)
 	{
-		getline(std::cin, line);
+		if (!std::cin.eof())
+			std::cout << "CMD=> ";
+		if (!std::getline(std::cin, line))
+			return (0);
+		line = strtrim(line);
 		if (!line.compare("ADD"))
 			phoneBook.addContact();
 		else if (!line.compare("SEARCH"))
 			phoneBook.searchContact();
 		else if (!line.compare("EXIT"))
 			break ;
-		
-		
 	}
 	return (0);
 }
