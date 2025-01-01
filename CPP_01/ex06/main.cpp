@@ -6,30 +6,20 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 15:54:21 by aaghla            #+#    #+#             */
-/*   Updated: 2025/01/01 20:00:30 by aaghla           ###   ########.fr       */
+/*   Updated: 2025/01/01 17:31:05 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 
-int	main(void)
+int	main(int ac, char **av)
 {
 	Harl	newHarl;
-	
-	std::cout << "[ DEBUG ]\n";
-	newHarl.complain("DEBUG");
-	std::cout << "\n";
-	std::cout << "[ INFO ]\n";
-	newHarl.complain("INFO");
-	std::cout << "\n";
-	std::cout << "[ WARNING ]\n";
-	newHarl.complain("WARNING");
-	std::cout << "\n";
-	std::cout << "[ ERROR ]\n";
-	newHarl.complain("ERROR");
-	std::cout << "\n";
-	std::cout << "-----------\nCalling ERROR 10 times:\n";
-	for (int i = 0; i < 10; i++)
-		newHarl.complain("ERROR");
+
+	if (ac != 2) {
+		std::cout << "invalid number of arguments\n";
+		return (1);
+	}
+	newHarl.complain(av[1]);
 	return (0);
 }
