@@ -1,6 +1,6 @@
 NAME	= Fixed
 CC		= c++
-FLAGS	= #-Wall -Wextra -Werror
+FLAGS	= -Wall -Wextra -Werror
 
 SRC		= main.cpp Fixed.cpp Point.cpp bsp.cpp
 

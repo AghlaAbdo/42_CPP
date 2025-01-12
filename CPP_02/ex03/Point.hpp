@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 16:07:24 by aaghla            #+#    #+#             */
-/*   Updated: 2025/01/11 18:30:29 by aaghla           ###   ########.fr       */
+/*   Updated: 2025/01/12 11:54:53 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 class	Point {
 private:
-	Fixed	x;
-	Fixed	y;
+	Fixed const	x;
+	Fixed const	y;
 
 public:
 	Point(void);
