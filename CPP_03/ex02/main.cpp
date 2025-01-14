@@ -6,12 +6,13 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 12:56:32 by aaghla            #+#    #+#             */
-/*   Updated: 2025/01/14 11:36:05 by aaghla           ###   ########.fr       */
+/*   Updated: 2025/01/14 11:35:42 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int	main(void)
 {
@@ -38,7 +39,7 @@ int	main(void)
 	scav.beRepaired(2);
 	
 	for (int i = 0; i < 40; i++)
-		scav.attack("Dahiya");
+		scav.attack("Dahaya");
 	
 	for (int i = 0; i < 10; i++)
 		scav.beRepaired(2);
@@ -50,6 +51,28 @@ int	main(void)
 	scav.attack("Dahiya");
 	scav.takeDamage(10);
 	scav.guardGate();
+
+	std::cout << "\nTests for FragTrap:\n" << std::endl;
+	
+	FragTrap	frag("Amigo");
+	
+	frag.attack("Dahiya");
+	frag.takeDamage(10);
+	frag.beRepaired(5);
+
+	for (int i = 0; i < 50; i++)
+		frag.attack("Dahaya");
+
+	for (int i = 0; i < 50; i++)
+		frag.beRepaired(5);
+	
+	for (int i = 0; i < 20; i++)
+		frag.takeDamage(18);
+	
+	frag.attack("Dahiya");
+	frag.takeDamage(10);
+	frag.beRepaired(10);
+	frag.highFivesGuys();
 	
 	return (0);
 }
