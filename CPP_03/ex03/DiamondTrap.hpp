@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 13:46:06 by aaghla            #+#    #+#             */
-/*   Updated: 2025/01/14 18:39:56 by aaghla           ###   ########.fr       */
+/*   Updated: 2025/01/15 10:19:13 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
 
-class	DiamondTrap : public FragTrap, public ScavTrap {
+class	DiamondTrap : public ScavTrap, public FragTrap {
 private:
 	std::string	name;
 

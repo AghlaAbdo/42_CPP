@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 14:00:05 by aaghla            #+#    #+#             */
-/*   Updated: 2025/01/14 17:56:12 by aaghla           ###   ########.fr       */
+/*   Updated: 2025/01/15 10:20:30 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ DiamondTrap::DiamondTrap(void)
 }
 
 DiamondTrap::DiamondTrap(const std::string &newName)
-	: ScavTrap(newName + "_clap_name"), name(newName)
+	: FragTrap(newName + "_clap_name"), name(newName)
 {
 	setHitPoints(FragTrap::getHitPoints());
 	setEnergyPoints(ScavTrap::getEnergyPoints());
@@ -31,7 +31,7 @@ DiamondTrap::DiamondTrap(const std::string &newName)
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap &copy)
-	: ClapTrap(copy), FragTrap(copy), ScavTrap(copy)
+	: ClapTrap(copy), ScavTrap(copy), FragTrap(copy)
 {
 	setName(copy.getName());
 	setHitPoints(copy.getHitPoints());
