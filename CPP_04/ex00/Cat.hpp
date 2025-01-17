@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 18:07:58 by aaghla            #+#    #+#             */
-/*   Updated: 2025/01/16 20:24:26 by aaghla           ###   ########.fr       */
+/*   Updated: 2025/01/17 21:57:08 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ public:
 	~Cat(void);
 	Cat	&operator=(const Cat &copy);
 
-	void	makeSound(void) const override;
+	void	makeSound(void) const;
 };
 
 #endif
