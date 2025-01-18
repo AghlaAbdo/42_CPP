@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 18:04:44 by aaghla            #+#    #+#             */
-/*   Updated: 2025/01/18 17:42:06 by aaghla           ###   ########.fr       */
+/*   Updated: 2025/01/18 17:49:51 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,21 +72,21 @@ int	main(void)
 	Dog *da = new Dog();
 	da->setBrainIdea(0, "No idea");
 	std::cout << std::endl;
-	Dog	*db = new Dog(*da);
+	Dog	db = *da;
 	
 	std::cout << "\nda idea: " << da->getIdea(0) << std::endl;
-	std::cout << "db idea: " << db->getIdea(0)<< std::endl;
+	std::cout << "db idea: " << db.getIdea(0)<< std::endl;
 	da->setBrainIdea(0, "Idea Removed");
 	std::cout << "\nda idea: " << da->getIdea(0) << std::endl;
-	std::cout << "db idea: " << db->getIdea(0) << std::endl;
+	std::cout << "db idea: " << db.getIdea(0) << std::endl;
 
 	std::cout << std::endl;
 	
-	std::cout << da->getType() << "\n" << db->getType() << std::endl;
+	std::cout << da->getType() << "\n" << db.getType() << std::endl;
 	
 	delete da;
 	std::cout << std::endl;
-	delete db;
+	// delete db;
 
 	return (0);
 }
