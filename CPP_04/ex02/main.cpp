@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 18:04:44 by aaghla            #+#    #+#             */
-/*   Updated: 2025/01/18 17:42:06 by aaghla           ###   ########.fr       */
+/*   Updated: 2025/01/18 17:41:53 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,52 +41,12 @@ int	main(void)
 		animals[i]->makeSound();
 	}
 
+	std::cout << std::endl;
+
 	for (int i = 0; i < arraySize; ++i) {
 		delete animals[i];
 		std::cout << std::endl;
 	}
-
-	std::cout << "\nCat deep copy test:\n" << std::endl;
-
-	Cat *ca = new Cat();
-	ca->setBrainIdea(0, "No idea");
-	std::cout << std::endl;
-	Cat	*cb = new Cat(*ca);
-	
-	std::cout << "\nca idea: " << ca->getIdea(0) << std::endl;
-	std::cout << "cb idea: " << cb->getIdea(0)<< std::endl;
-	ca->setBrainIdea(0, "Idea Removed");
-	std::cout << "\nca idea: " << ca->getIdea(0) << std::endl;
-	std::cout << "cb idea: " << cb->getIdea(0) << std::endl;
-
-	std::cout << std::endl;
-	
-	std::cout << ca->getType() << "\n" << cb->getType() << std::endl;
-	
-	delete ca;
-	std::cout << std::endl;
-	delete cb;
-	
-	std::cout << "\nDog deep copy test:\n" << std::endl;
-
-	Dog *da = new Dog();
-	da->setBrainIdea(0, "No idea");
-	std::cout << std::endl;
-	Dog	*db = new Dog(*da);
-	
-	std::cout << "\nda idea: " << da->getIdea(0) << std::endl;
-	std::cout << "db idea: " << db->getIdea(0)<< std::endl;
-	da->setBrainIdea(0, "Idea Removed");
-	std::cout << "\nda idea: " << da->getIdea(0) << std::endl;
-	std::cout << "db idea: " << db->getIdea(0) << std::endl;
-
-	std::cout << std::endl;
-	
-	std::cout << da->getType() << "\n" << db->getType() << std::endl;
-	
-	delete da;
-	std::cout << std::endl;
-	delete db;
 
 	return (0);
 }
