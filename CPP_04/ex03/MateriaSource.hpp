@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 12:17:50 by aaghla            #+#    #+#             */
-/*   Updated: 2025/01/19 12:38:55 by aaghla           ###   ########.fr       */
+/*   Updated: 2025/01/20 20:21:20 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 
 #include "IMateriaSource.hpp"
 #include "AMateria.hpp"
+#include "grb.hpp"
 
 class	MateriaSource : public IMateriaSource {
 private:
-	AMateria	*slots[4];
+	AMateria		*slots[4];
+	t_grbMateria	*buff;
 
 public:
 	MateriaSource(void);

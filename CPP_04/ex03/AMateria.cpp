@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 18:48:08 by aaghla            #+#    #+#             */
-/*   Updated: 2025/01/19 11:24:21 by aaghla           ###   ########.fr       */
+/*   Updated: 2025/01/20 15:36:47 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,4 @@ std::string const	&AMateria::getType() const
 	return (type);
 }
 
-void	AMateria::use(ICharacter &target)
-{
-	std::cout << "* shoots something on " << target.getName() << std::endl;
-}
+void	AMateria::use(ICharacter &target) {(void)target;}

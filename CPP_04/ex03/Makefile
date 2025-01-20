@@ -1,8 +1,12 @@
-NAME	= Animal
+NAME	= Materia
 CC		= c++
 FLAGS	= -Wall -Wextra -Werror
 
-SRC		= main.cpp AMateria.cpp ICharacter.cpp Character.cpp Ice.cpp
+SRC		= main.cpp AMateria.cpp ICharacter.cpp Character.cpp \
+			Ice.cpp Cure.cpp IMateriaSource.cpp MateriaSource.cpp grb.cpp
+
+INCLUDS = AMateria.hpp ICharacter.hpp Ice.hpp IMateriaSource.hpp \
+			MateriaSource.hpp Cure.hpp grb.hpp
 
 OBJ = $(SRC:.cpp=.o)
 
@@ -11,7 +15,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CC) $(FLAGS) $^ -o $@
 
-%.o: %.cpp AMateria.hpp ICharacter.hpp Ice.hpp
+%.o: %.cpp $(INCLUDS)
 	$(CC) $(FLAGS) -c $< -o $@
 
 clean:

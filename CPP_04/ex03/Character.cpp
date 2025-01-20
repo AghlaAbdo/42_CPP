@@ -6,14 +6,15 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 01:50:14 by aaghla            #+#    #+#             */
-/*   Updated: 2025/01/19 11:21:57 by aaghla           ###   ########.fr       */
+/*   Updated: 2025/01/20 20:45:03 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.hpp"
+#include "grb.hpp"
 
 Character::Character(void)
-	: name("Unnamed")
+	: name("Unnamed"), buff(NULL)
 {
 	for (int i = 0; i < 4; i++)
 		slots[i] = NULL;
@@ -21,7 +22,7 @@ Character::Character(void)
 }
 
 Character::Character(const std::string &name)
-	: name(name)
+	: name(name), buff(NULL)
 {
 	for (int i = 0; i < 4; i++)
 		slots[i] = NULL;
@@ -30,29 +31,38 @@ Character::Character(const std::string &name)
 
 Character::Character(const Character &copy)
 {
+	clearMaterias(buff);
+	buff = NULL;
 	name = copy.name;
 	for (int i = 0; i < 4; i++) {
 		if (copy.slots[i])
+		{
 			this->slots[i] = copy.slots[i]->clone();
-		else
+			storeMateria(&buff, newMateria(this->slots[i]));
+		}
+		else {
 			this->slots[i] = NULL;
+		}
 	}
 	std::cout << "Copy constructor for Character called" << std::endl;
 }
 
 Character::~Character(void)
 {
+	clearMaterias(buff);
 	std::cout << "Destructor for Character called" << std::endl;
 }
 
 Character	&Character::operator=(const Character &copy)
 {
+	clearMaterias(buff);
+	buff = NULL;
 	name = copy.name;
-	for (int i = 0; i < 4; i++)
-		delete slots[i];
 	for (int i = 0; i < 4; i++) {
-		if (copy.slots[i])
+		if (copy.slots[i]) {
 			this->slots[i] = copy.slots[i]->clone();
+			storeMateria(&buff, newMateria(this->slots[i]));
+		}
 		else
 			this->slots[i] = NULL;
 	}
@@ -67,6 +77,9 @@ std::string const	&Character::getName() const
 
 void	Character::equip(AMateria *m)
 {
+	if (!m)
+		return ;
+	storeMateria(&buff, newMateria(m));
 	for (int i = 0; i < 4; i++) {
 		if (!slots[i]) {
 			slots[i] = m;

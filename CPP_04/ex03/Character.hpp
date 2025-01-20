@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 01:38:48 by aaghla            #+#    #+#             */
-/*   Updated: 2025/01/19 08:10:07 by aaghla           ###   ########.fr       */
+/*   Updated: 2025/01/20 20:14:18 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,19 @@
 
 #include "ICharacter.hpp"
 #include "AMateria.hpp"
+#include "grb.hpp"
+
+// typedef struct s_grbMateria
+// {
+// 	AMateria			*m;
+// 	struct s_grbMateria	*next;
+// }	t_grbMateria;
 
 class	Character : public ICharacter {
 private:
 	AMateria	*slots[4];
 	std::string	name;
+	t_grbMateria	*buff;
 
 public:
 	Character(void);
