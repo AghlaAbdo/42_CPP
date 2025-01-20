@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 18:39:09 by aaghla            #+#    #+#             */
-/*   Updated: 2025/01/18 18:49:08 by aaghla           ###   ########.fr       */
+/*   Updated: 2025/01/19 04:16:48 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #define AMATERIA_HPP
 
 #include <iostream>
+#include "ICharacter.hpp"
 
-class	AMateria
-{
+class	AMateria {
 protected:
 	std::string	type;
 

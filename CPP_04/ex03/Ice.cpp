@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 18:56:05 by aaghla            #+#    #+#             */
-/*   Updated: 2025/01/18 19:10:57 by aaghla           ###   ########.fr       */
+/*   Updated: 2025/01/19 08:01:09 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,27 @@ Ice::Ice(void)
 Ice::Ice(const Ice &copy)
 	: AMateria(copy)
 {
+	std::cout << "Copy constructor for Ice called" << std::endl;
+}
 
+Ice	&Ice::operator=(const Ice &copy)
+{
+	(void)copy;
+	std::cout << "Copy assignement constructor for Ice called" << std::endl;
+	return (*this);
+}
+
+Ice::~Ice(void)
+{
+	std::cout << "Destructor for Ice called" << std::endl;
+}
+
+AMateria	*Ice::clone(void) const
+{
+	return (new Ice());
+}
+
+void	Ice::use(ICharacter &target)
+{
+	std::cout << "* shoots an ice bolt at " << target.getName() << std::endl;
 }

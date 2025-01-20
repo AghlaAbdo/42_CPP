@@ -2,7 +2,7 @@ NAME	= Animal
 CC		= c++
 FLAGS	= -Wall -Wextra -Werror
 
-SRC		= main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
+SRC		= main.cpp AMateria.cpp ICharacter.cpp Character.cpp Ice.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
@@ -11,7 +11,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CC) $(FLAGS) $^ -o $@
 
-%.o: %.cpp Animal.hpp Cat.hpp Dog.hpp WrongAnimal.hpp WrongCat.hpp Brain.hpp
+%.o: %.cpp AMateria.hpp ICharacter.hpp Ice.hpp
 	$(CC) $(FLAGS) -c $< -o $@
 
 clean:

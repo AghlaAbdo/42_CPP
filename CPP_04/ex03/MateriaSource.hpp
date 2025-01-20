@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.cpp                                       :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/18 18:48:08 by aaghla            #+#    #+#             */
-/*   Updated: 2025/01/19 11:24:21 by aaghla           ###   ########.fr       */
+/*   Created: 2025/01/19 12:17:50 by aaghla            #+#    #+#             */
+/*   Updated: 2025/01/19 12:38:55 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef IMATERIASOURCE_HPP
+#define IMATERIASOURCE_HPP
+
+#include "IMateriaSource.hpp"
 #include "AMateria.hpp"
 
-AMateria::AMateria(std::string const &type)
-	: type(type)
-{
-	std::cout << "Parametrized constructor for AMateria called" << std::endl;
-}
+class	MateriaSource : public IMateriaSource {
+private:
+	AMateria	*slots[4];
 
-AMateria::~AMateria(void)
-{
-	std::cout << "Destructor for AMateria called" << std::endl;
-}
+public:
+	MateriaSource(void);
+	MateriaSource(const MateriaSource &copy);
+	~MateriaSource(void);
+	MateriaSource &operator=(const MateriaSource &copy);
 
-std::string const	&AMateria::getType() const
-{
-	return (type);
-}
+	void		learnMateria(AMateria*);
+	AMateria*	createMateria(std::string const & type);
+};
 
-void	AMateria::use(ICharacter &target)
-{
-	std::cout << "* shoots something on " << target.getName() << std::endl;
-}
+#endif
