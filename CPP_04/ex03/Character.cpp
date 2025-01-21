@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 01:50:14 by aaghla            #+#    #+#             */
-/*   Updated: 2025/01/20 20:45:03 by aaghla           ###   ########.fr       */
+/*   Updated: 2025/01/21 11:38:36 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ Character::Character(void)
 {
 	for (int i = 0; i < 4; i++)
 		slots[i] = NULL;
-	std::cout << "Default constructor for Character called" << std::endl;
 }
 
 Character::Character(const std::string &name)
@@ -26,7 +25,6 @@ Character::Character(const std::string &name)
 {
 	for (int i = 0; i < 4; i++)
 		slots[i] = NULL;
-	std::cout << "Parametrizeed constructor for Character called" << std::endl;
 }
 
 Character::Character(const Character &copy)
@@ -44,13 +42,11 @@ Character::Character(const Character &copy)
 			this->slots[i] = NULL;
 		}
 	}
-	std::cout << "Copy constructor for Character called" << std::endl;
 }
 
 Character::~Character(void)
 {
 	clearMaterias(buff);
-	std::cout << "Destructor for Character called" << std::endl;
 }
 
 Character	&Character::operator=(const Character &copy)
@@ -66,7 +62,6 @@ Character	&Character::operator=(const Character &copy)
 		else
 			this->slots[i] = NULL;
 	}
-	std::cout << "Copy assignement for Character called" << std::endl;
 	return (*this);
 }
 
