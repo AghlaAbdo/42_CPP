@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 12:21:22 by aaghla            #+#    #+#             */
-/*   Updated: 2025/01/21 11:39:55 by aaghla           ###   ########.fr       */
+/*   Updated: 2025/01/21 13:15:13 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 MateriaSource::MateriaSource(void)
 {
+	buff = NULL;
 	for (int i = 0; i < 4; i++)
 		slots[i] = NULL;
 }
