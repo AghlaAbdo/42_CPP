@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 18:20:06 by aaghla            #+#    #+#             */
-/*   Updated: 2025/01/17 21:43:25 by aaghla           ###   ########.fr       */
+/*   Updated: 2025/01/21 13:56:12 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ Dog::~Dog(void)
 Dog	&Dog::operator=(const Dog &copy)
 {
 	type = copy.type;
+	delete brain;
+	brain = new Brain(*copy.brain);
 	return (*this);
 }
 

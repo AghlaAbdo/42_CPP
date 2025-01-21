@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 18:11:38 by aaghla            #+#    #+#             */
-/*   Updated: 2025/01/17 21:35:46 by aaghla           ###   ########.fr       */
+/*   Updated: 2025/01/21 13:47:20 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ Cat::~Cat(void)
 Cat	&Cat::operator=(const Cat &copy)
 {
 	type = copy.type;
+	delete brain;
+	brain = new Brain(*copy.brain);
 	return (*this);
 }
 

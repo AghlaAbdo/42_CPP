@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 18:04:44 by aaghla            #+#    #+#             */
-/*   Updated: 2025/01/18 17:49:51 by aaghla           ###   ########.fr       */
+/*   Updated: 2025/01/21 13:57:39 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,6 @@ int	main(void)
 	std::cout << da->getType() << "\n" << db.getType() << std::endl;
 	
 	delete da;
-	std::cout << std::endl;
-	// delete db;
 
 	return (0);
 }
