@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thedon <thedon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:10:27 by aaghla            #+#    #+#             */
-/*   Updated: 2025/01/24 21:29:37 by aaghla           ###   ########.fr       */
+/*   Updated: 2025/01/29 14:34:50 by thedon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,15 @@ public:
 	bool		getIsSigned(void) const;
 	int			getSignGrade(void) const;
 	int			getExecGrade(void) const;
+
+	class	GradeTooHighException : public std::exception {
+	public:
+		virtual const char *what() const throw();
+	};
+	class	GradeTooLowException : public std::exception {
+	public:
+		virtual const char	*what() const throw();
+	};
 
 	void	beSigned(const Bureaucrat &bur);
 };

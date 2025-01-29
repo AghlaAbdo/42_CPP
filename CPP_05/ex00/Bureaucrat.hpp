@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thedon <thedon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 11:31:17 by aaghla            #+#    #+#             */
-/*   Updated: 2025/01/24 15:11:30 by aaghla           ###   ########.fr       */
+/*   Updated: 2025/01/29 12:25:27 by thedon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,15 @@ public:
 	int					getGrade(void) const;
 	void		gradeInc(void);
 	void		gradeDec(void);
+
+	class	GradeTooHighException : public std::exception {
+	public:
+		virtual const char *what() const throw();
+	};
+	class	GradeTooLowException : public std::exception {
+	public:
+		virtual const char	*what() const throw();
+	};
 };
 
 std::ostream	&operator<<(std::ostream &out, const Bureaucrat &bur);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thedon <thedon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 11:55:59 by aaghla            #+#    #+#             */
-/*   Updated: 2025/01/24 16:01:58 by aaghla           ###   ########.fr       */
+/*   Updated: 2025/01/29 16:40:26 by thedon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@ int	main(void)
 	try {
 		Bureaucrat	bur("Bill", -50);
 	}
-	catch (char const *e) {
-		std::cout << e << std::endl;
+	catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
 	}
 
 	try {
 		Bureaucrat	bur("Bill", 151);
 	}
-	catch (char const *e) {
-		std::cout << e << std::endl;
+	catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
 	}
 	std::cout << std::endl;
 
@@ -37,15 +37,15 @@ int	main(void)
 	try {
 		bur.gradeInc();
 	}
-	catch (char const *e) {
-		std::cout << e << std::endl;
+	catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
 	}
 
 	try {
 		bur2.gradeDec();
 	}
-	catch (char const *e) {
-		std::cout << e << std::endl;
+	catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
 	}
 	
 	std::cout << "\n" << bur;

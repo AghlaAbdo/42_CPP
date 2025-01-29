@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thedon <thedon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 11:55:59 by aaghla            #+#    #+#             */
-/*   Updated: 2025/01/25 17:52:45 by aaghla           ###   ########.fr       */
+/*   Updated: 2025/01/29 14:33:13 by thedon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,22 +28,22 @@ int	main(void)
         form.beSigned(bur);
         std::cout << "After signing:\n" << form << std::endl;
 
-    } catch (char const *e) {
-        std::cerr << "Exception: " << e << std::endl;
+    } catch (std::exception &e) {
+        std::cerr << e.what() << std::endl;
     }
 
     try {
         std::cout << "\nCreating Form with invalid sign grade (0, should throw)..." << std::endl;
         Form invalidForm("InvalidForm", 0, 100);
-    } catch (char const *e) {
-        std::cerr << "Exception: " << e << std::endl;
+    } catch (std::exception &e) {
+        std::cerr << e.what() << std::endl;
     }
 
     try {
         std::cout << "\nCreating Form with invalid exec grade (151, should throw)..." << std::endl;
         Form invalidForm("InvalidForm", 50, 151);
-    } catch (char const *e) {
-        std::cerr << "Exception: " << e << std::endl;
+    } catch (std::exception &e) {
+        std::cerr << e.what() << std::endl;
     }
 
     try {
@@ -58,8 +58,8 @@ int	main(void)
         std::cout << "Trying to sign the form with Bob (should throw)..." << std::endl;
         form.beSigned(bur);
 
-    } catch (char const *e) {
-        std::cerr << "Exception: " << e << std::endl;
+    } catch (std::exception &e) {
+        std::cerr << e.what() << std::endl;
     }
 
 	

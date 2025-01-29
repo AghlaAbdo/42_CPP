@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thedon <thedon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:20:32 by aaghla            #+#    #+#             */
-/*   Updated: 2025/01/25 18:08:23 by aaghla           ###   ########.fr       */
+/*   Updated: 2025/01/29 16:21:55 by thedon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ Form::Form(std::string name, int signGrade, int execGrade)
 	: _name(name), _isSigned(false), _signGrade(signGrade), _execGrade(execGrade)
 {
 	if (signGrade <= 0 || execGrade <= 0)
-		throw "Form::GradeTooHighException";
+		throw GradeTooHighException();
 	else if (signGrade > 150 || execGrade > 150)
-		throw "Form::GradeTooLowException";
+		throw GradeTooLowException();
 }
 
 Form::Form(const Form &copy)
@@ -59,9 +59,9 @@ int	Form::getExecGrade(void) const
 
 void	Form::beSigned(const Bureaucrat &bur)
 {
-	bur.signForm(*this);
 	if (bur.getGrade() > _signGrade)
-		throw "Form::GradeTooLowException";
+		// throw 
+		throw GradeTooLowException();
 	if (!_isSigned)
 		_isSigned = true;
 }
@@ -72,4 +72,14 @@ std::ostream	&operator<<(std::ostream &out, const Form &form)
 		<< "\nSign grade: " << form.getSignGrade() << "\nExecute grade: " 
 		<< form.getExecGrade() << std::endl;
 	return (out);
+}
+
+const char	*Form::GradeTooHighException::what() const throw()
+{
+	return ("Form::GradeTooHighException");
+}
+
+const char	*Form::GradeTooLowException::what() const throw()
+{
+	return ("Form::GradeTooLowException");
 }
