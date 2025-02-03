@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 11:31:17 by aaghla            #+#    #+#             */
-/*   Updated: 2025/02/02 13:43:05 by aaghla           ###   ########.fr       */
+/*   Updated: 2025/02/02 16:38:33 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include <iostream>
 
-class	Aform;
+class	AForm;
 
 class	Bureaucrat {
 private:
@@ -43,7 +43,8 @@ public:
 		virtual const char	*what() const throw();
 	};
 	
-	void	signForm(Aform &form);
+	void	signForm(AForm &form);
+	void	executeForm(AForm const & form);
 };
 
 std::ostream	&operator<<(std::ostream &out, const Bureaucrat &bur);

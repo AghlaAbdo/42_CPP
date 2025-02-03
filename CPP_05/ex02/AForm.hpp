@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Aform.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -16,7 +16,7 @@
 #include <iostream>
 #include "Bureaucrat.hpp"
 
-class	Aform {
+class	AForm {
 private:
 	const std::string	_name;
 	bool				_isSigned;
@@ -24,11 +24,11 @@ private:
 	const int			_execGrade;
 
 public:
-	Aform(void);
-	Aform(std::string name, int signGrade, int execGrade);
-	Aform(const Aform &copy);
-	~Aform(void);
-	Aform	&operator=(const Aform &copy);
+	AForm(void);
+	AForm(std::string name, int signGrade, int execGrade);
+	AForm(const AForm &copy);
+	~AForm(void);
+	AForm	&operator=(const AForm &copy);
 
 	const std::string	&getName(void) const;
 	bool		getIsSigned(void) const;
@@ -43,11 +43,20 @@ public:
 	public:
 		virtual const char	*what() const throw();
 	};
+	class	FormSignedException : public std::exception {
+	public:
+		virtual const char	*what() const throw();
+	};
+	class	FormNotSignedException : public std::exception {
+	public:
+		virtual const char	*what() const throw();
+	};
+	
 
 	void	beSigned(const Bureaucrat &bur);
-	virtual void	execute(Bureaucrat const &executor) = 0;
+	virtual void	execute(Bureaucrat const &executor) const = 0;
 };
 
-std::ostream	&operator<<(std::ostream &out, const Aform &Aform);
+std::ostream	&operator<<(std::ostream &out, const AForm &form);
 
 #endif
