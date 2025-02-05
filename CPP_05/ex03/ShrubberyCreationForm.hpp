@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/02 15:43:08 by aaghla            #+#    #+#             */
-/*   Updated: 2025/02/05 19:08:43 by aaghla           ###   ########.fr       */
+/*   Created: 2025/02/02 13:45:18 by aaghla            #+#    #+#             */
+/*   Updated: 2025/02/05 16:21:10 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ROBOTOMYREQUESTFORM_HPP
-#define ROBOTOMYREQUESTFORM_HPP
+#ifndef SHRUBBERYCREATIONFORM_HPP
+#define SHRUBBERYCREATIONFORM_HPP
 
 #include <iostream>
 #include <fstream>
 #include "AForm.hpp"
 
-class	RobotomyRequestForm : public AForm {
+class	ShrubberyCreationForm : public AForm {
 private:
 	std::string	_target;
 
 public:
-	RobotomyRequestForm(void);
-	RobotomyRequestForm(std::string target);
-	RobotomyRequestForm(const RobotomyRequestForm &copy);
-	~RobotomyRequestForm(void);
-	RobotomyRequestForm	operator=(const RobotomyRequestForm &copy);
+	ShrubberyCreationForm(void);
+	ShrubberyCreationForm(std::string target);
+	ShrubberyCreationForm(const ShrubberyCreationForm &copy);
+	~ShrubberyCreationForm(void);
+	ShrubberyCreationForm	operator=(const ShrubberyCreationForm &copy);
 	
 	virtual void	execute(Bureaucrat const &executor) const;
 	std::string		getTarget(void) const;
+
+	static AForm	*makeForm(AForm *form, std::string formName, std::string formTarget);
 };
 
 #endif

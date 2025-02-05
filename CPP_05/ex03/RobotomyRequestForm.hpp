@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 15:43:08 by aaghla            #+#    #+#             */
-/*   Updated: 2025/02/05 19:08:43 by aaghla           ###   ########.fr       */
+/*   Updated: 2025/02/05 16:17:30 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ public:
 	
 	virtual void	execute(Bureaucrat const &executor) const;
 	std::string		getTarget(void) const;
+
+	static AForm	*makeForm(AForm *form, std::string type, std::string target);
 };
 
 #endif
