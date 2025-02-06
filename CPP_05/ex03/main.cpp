@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 11:55:59 by aaghla            #+#    #+#             */
-/*   Updated: 2025/02/05 19:03:54 by aaghla           ###   ########.fr       */
+/*   Updated: 2025/02/06 15:24:02 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main(void)
 	std::cout << "\n---------- Try to sign form ------------" << std::endl;
 	try {
 		bur.signForm(*form);
-		std::cout << "is form sigend: " << form->getIsSigned() << std::endl;
+		std::cout << *form << std::endl;
 	}
 	catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
@@ -53,7 +53,7 @@ int	main(void)
 	delete	form;
 
 	std::cout << "\n------------ intern create Shrubbery Creation form -----------" << std::endl;
-	form = intern.makeForm("shrubbery creation", "Jake");
+	form = intern.makeForm("shrubbery creation", "Home");
 	try {
 		form->beSigned(bur);
 		form->execute(bur);

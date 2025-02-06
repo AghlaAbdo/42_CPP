@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 14:48:36 by aaghla            #+#    #+#             */
-/*   Updated: 2025/02/05 16:20:44 by aaghla           ###   ########.fr       */
+/*   Updated: 2025/02/06 15:08:29 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
        |o|        | |         | |\n\
        |.|        | |         | |\n\
     \\/ ._\\//_/__/  ,\\_//__\\/.  \\_//__/_";
+	file.close();
 }
 
 AForm	*ShrubberyCreationForm::makeForm(AForm *form, std::string type, std::string target)

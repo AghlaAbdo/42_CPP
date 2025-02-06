@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 19:05:19 by aaghla            #+#    #+#             */
-/*   Updated: 2025/02/05 16:27:44 by aaghla           ###   ########.fr       */
+/*   Updated: 2025/02/06 15:14:57 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,13 @@
 Intern::Intern(void){};
 
 Intern::Intern(const Intern &copy) {
-	*this = copy;
+	(void)copy;
+	// there is nothing to assign
 }
 
 Intern	&Intern::operator=(const Intern &copy) {
-	*this = copy;
+	(void)copy;
+	// there is nothing to assign
 	return (*this);
 }
 

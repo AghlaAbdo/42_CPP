@@ -6,7 +6,7 @@
 /*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 11:55:59 by aaghla            #+#    #+#             */
-/*   Updated: 2025/02/02 17:52:43 by aaghla           ###   ########.fr       */
+/*   Updated: 2025/02/06 15:06:57 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,75 +18,82 @@
 
 int	main(void)
 {
-	ShrubberyCreationForm shrubbery("Home");
-	RobotomyRequestForm robotomy("Morty");
-	PresidentialPardonForm pardon("Rick Sanchez");
-	Bureaucrat mike("Mike", 150);
-	Bureaucrat jon("Jon", 120);
-	Bureaucrat steve("Steve", 3);
+	Bureaucrat	bur("Jake", 10);
+	Bureaucrat	bur2("Slave", 4);
+	AForm	*shrub = new ShrubberyCreationForm("Home");
+	AForm	*robot = new RobotomyRequestForm("Alice");
+	AForm	*presd = new PresidentialPardonForm("Jane");
 	
-	/* Try to execute forms without being signed */
-	{
-		try
-		{
-			std::cout << mike << std::endl;
-			std::cout << shrubbery << std::endl;
-			std::cout << robotomy << std::endl;
-			std::cout << pardon << std::endl;
-			mike.executeForm(shrubbery);
-			mike.executeForm(robotomy);
-			mike.executeForm(pardon);
-		}
-		catch (std::exception &e)
-		{
-			std::cout << e.what() << std::endl;
-		}
+	std::cout << "-------- Trying to execute forms without being signed -------" << std::endl;
+	try {
+		shrub->execute(bur);
+		robot->execute(bur);
+		presd->execute(bur);
+	}
+	catch (const std::exception &e) {
+		std::cout << e.what() << std::endl;
 	}
 
-	std::cout << "\n --------------------- \n\n";
-	
-	/* Sign form and try to execute without enough grade */
-	{
-		try
-		{
-			std::cout << mike << std::endl;
-			std::cout << jon << std::endl;
-			std::cout << shrubbery << std::endl;
-			std::cout << robotomy << std::endl;
-			std::cout << pardon << std::endl;
-			shrubbery.beSigned(jon);
-			mike.executeForm(shrubbery);
-		}
-		catch (std::exception &e)
-		{
-			std::cout << e.what() << std::endl;
-		}
+	std::cout << "\n-------- Trying to sign forms --------" << std::endl;
+	try {
+		shrub->beSigned(bur);
+		robot->beSigned(bur);
+		presd->beSigned(bur);
+		std::cout << *shrub << std::endl;
+		std::cout << *robot << std::endl;
+		std::cout << *presd << std::endl;
 	}
+	catch (const std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+	
+	std::cout << "\n-------- Trying to execute forms after being signed -------" << std::endl;
+	try {
+		shrub->execute(bur);
+	}
+	catch (const std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+	try {
+		robot->execute(bur);
+	}
+	catch (const std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+	try {
+		presd->execute(bur);
+	}
+	catch (const std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+	
+	delete shrub;
+	shrub = new ShrubberyCreationForm("Garden");
+	shrub->beSigned(bur);
 
-	std::cout << "\n --------------------- \n\n";
-	
-	/* Sign forms and execute them */
-	{
-		try
-		{
-			robotomy.beSigned(steve);
-			pardon.beSigned(steve);
-			std::cout << shrubbery << std::endl;
-			std::cout << robotomy << std::endl;
-			std::cout << pardon << std::endl;
-			
-			std::cout << "\n --------------------- \n\n";
-			steve.executeForm(shrubbery);
-			std::cout << "\n --------------------- \n\n";
-			steve.executeForm(robotomy);
-			std::cout << "\n --------------------- \n\n";
-			steve.executeForm(pardon);
-		}
-		catch (std::exception &e)
-		{
-			std::cout << e.what() << std::endl;
-		}
+	std::cout << "\n--------- Trying to execute forms with Bureaucrat ---------" << std::endl;
+	try {
+		bur2.executeForm(*shrub);
+	}
+	catch (const std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+	try {
+		bur2.executeForm(*robot);
+	}
+	catch (const std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+	try {
+		bur2.executeForm(*presd);
+	}
+	catch (const std::exception &e) {
+		std::cout << e.what() << std::endl;
 	}
 	
-	std::cout << "\n --------------------- \n\n";
+	delete shrub;
+	delete robot;
+	delete presd;
+	
+	return (0);
 }

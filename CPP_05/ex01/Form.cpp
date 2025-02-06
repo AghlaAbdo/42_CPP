@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thedon <thedon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aaghla <aaghla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:20:32 by aaghla            #+#    #+#             */
-/*   Updated: 2025/01/29 16:21:55 by thedon           ###   ########.fr       */
+/*   Updated: 2025/02/06 14:19:25 by aaghla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ int	Form::getExecGrade(void) const
 void	Form::beSigned(const Bureaucrat &bur)
 {
 	if (bur.getGrade() > _signGrade)
-		// throw 
 		throw GradeTooLowException();
 	if (!_isSigned)
 		_isSigned = true;
