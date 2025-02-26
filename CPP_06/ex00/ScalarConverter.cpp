@@ -1,6 +1,21 @@
 #include "ScalarConverter.hpp"
 
-int countDots(std::string str)
+ScalarConverter::ScalarConverter(void) {}
+
+ScalarConverter::ScalarConverter(ScalarConverter const &copy)
+{
+    *this = copy;
+}
+
+ScalarConverter::~ScalarConverter(void) {}
+
+ScalarConverter	&ScalarConverter::operator=(ScalarConverter const &copy)
+{
+	(void)copy;
+	return *this;
+}
+
+int ScalarConverter::countDots(std::string &str)
 {
 	int count = 0;
 
@@ -10,7 +25,7 @@ int countDots(std::string str)
 	return (count);
 }
 
-int onlyDeciaml(std::string str)
+int ScalarConverter::onlyDeciaml(std::string &str)
 {
 	size_t i = 0;
 
@@ -25,24 +40,13 @@ int onlyDeciaml(std::string str)
 	return (1);
 }
 
-int onlyNonDeciaml(std::string str)
+int ScalarConverter::onlyNonDeciaml(std::string &str)
 {
 	for (size_t i = 0; i < str.length(); i++) {
 		if (str[i] >= '0' && str[i] <= '9')
 			return (0);
 	}
 	return (1);
-}
-
-double stringToDouble(const std::string& str) {
-	std::stringstream ss(str);
-	double number;
-
-	ss >> number;
-	if (ss.fail())
-		return (-1);
-	
-	return number;
 }
 
 void    ScalarConverter::convertFromChar(std::string &str)
@@ -73,10 +77,19 @@ void    ScalarConverter::convertFromFloat(std::string &str)
 	float f;
 
 	ss >> f;
+	if (ss.fail()) {
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: impossible" << std::endl;
+		std::cout << "double: impossible" << std::endl;
+		return;
+	}
 	char    c = static_cast<char>(f);
 	int     i = static_cast<int>(f);
 	double  d = static_cast<double>(f);
-	if (std::isprint(c))
+	if (i < 0 || i > 127)
+		std::cout << "char: impossible" << std::endl;
+	else if (std::isprint(c))
 		std::cout << "char: " << c << std::endl;
 	else
 		std::cout << "char: Non printable" << std::endl;
@@ -90,6 +103,7 @@ void    ScalarConverter::convertFromFloat(std::string &str)
 		std::cout << ".0";
 	std::cout << std::endl;
 }
+
 
 void    ScalarConverter::convertFromDouble(std::string &str)
 {
@@ -97,14 +111,26 @@ void    ScalarConverter::convertFromDouble(std::string &str)
 	double d;
 
 	ss >> d;
+	if (ss.fail()) {
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: impossible" << std::endl;
+		std::cout << "double: impossible" << std::endl;
+		return;
+	}
 	char    c = static_cast<char>(d);
 	int     i = static_cast<int>(d);
 	float	f = static_cast<float>(d);
-	if (std::isprint(c))
+	if (i < 0 || i > 127)
+		std::cout << "char: impossible" << std::endl;
+	else if (std::isprint(c))
 		std::cout << "char: " << c << std::endl;
 	else
 		std::cout << "char: Non printable" << std::endl;
-	std::cout << "int: " << i << std::endl;
+	if (static_cast<long>(d) < INT_MIN || static_cast<long>(d) > INT_MAX)
+		std::cout << "int: impossible" << std::endl;
+	else
+		std::cout << "int: " << i << std::endl;
 	std::cout << "float: " << f;
 	if (f == i)
 		std::cout << ".0";
@@ -113,19 +139,29 @@ void    ScalarConverter::convertFromDouble(std::string &str)
 	if (d == i)
 		std::cout << ".0";
 	std::cout << std::endl;
-
 }
 
 void	ScalarConverter::convertFromInt(std::string &str)
 {
 	std::stringstream ss(str);
-	int i;
+	long	num;
+	int		i;
 
-	ss >> i;
+	ss >> num;
+	if (ss.fail() || num > INT_MAX) {
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: impossible" << std::endl;
+		std::cout << "double: impossible" << std::endl;
+		return;
+	}
+	i = static_cast<int>(num);
 	char    c = static_cast<char>(i);
 	float	f = static_cast<float>(i);
 	double	d = static_cast<int>(i);
-	if (std::isprint(c))
+	if (i < 0 || i > 127)
+		std::cout << "char: impossible" << std::endl;
+	else if (std::isprint(c))
 		std::cout << "char: " << c << std::endl;
 	else
 		std::cout << "char: Non printable" << std::endl;
@@ -165,4 +201,3 @@ void    ScalarConverter::convert(std::string str)
 	else
 	    convertFromInt(str);
 }
-
