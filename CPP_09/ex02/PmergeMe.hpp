@@ -19,4 +19,9 @@ void	fstInsertToMain(std::vector<int> &jacobNums, std::vector<int> &main, std::v
 
 //	std::deque container
 void	secParseArgs(std::deque<std::string> args);
-void	secConvertToInt(std::deque<int> &nums, std::deque<std::string> args);
+void	secConvertToInt(std::deque<std::pair<int, int> > &nums, std::deque<std::string> args);
+void	secSortNums(std::deque<std::pair<int, int> > &nums);
+void    secSortPairs(std::deque<std::pair<int, int> > &nums);
+void    secSplitPairs(std::deque<std::pair<int, int> > &nums, std::deque<int> &main, std::deque<int> &pend);
+void	secGenerateJacobNums(std::deque<int> &jacobNums, size_t pendSize);
+void	secInsertToMain(std::deque<int> &jacobNums, std::deque<int> &main, std::deque<int> &pend);
