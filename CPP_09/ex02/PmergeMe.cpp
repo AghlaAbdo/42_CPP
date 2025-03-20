@@ -50,6 +50,22 @@ void	fstConvertToInt(std::vector<std::pair<int, int> > &nums, std::vector<std::s
 void    fstSortNums(std::vector<std::pair<int, int> > &nums)
 {
 	std::vector<std::pair<int, int> >::iterator	it;
+	// size_t	curr;
+	// size_t	comp;
+
+	// for (curr = 0; curr < nums.size(); curr++) {
+	// 	comp = curr;
+
+	// 	if (nums[curr].first == nums[curr].second)
+	// 		throw std::runtime_error("Error: duplicate number");
+	// 	while (++comp < nums.size())
+	// 		if (nums[curr].first == nums[comp].first || nums[curr].first == nums[comp].second)
+	// 			throw std::runtime_error("Error: duplicate number");
+	// 	comp = curr;
+	// 	while (++comp < nums.size())
+	// 		if (nums[curr].second == nums[comp].first || nums[curr].second == nums[comp].second)
+	// 			throw std::runtime_error("Error: duplicate number");
+	// }
 
 	it = nums.begin();
 	while (it != nums.end()) {
@@ -150,12 +166,12 @@ void	fstInsertNum(std::vector<int> &main, int val)
     while (left <= right) {
         int mid = left + (right - left) / 2;
 
-		if (main[0] > val) {
+		if (main[0] >= val) {
 			// std::cout << "place to insert: " << val << " is: At Begining" << std::endl;
 			main.insert(main.begin(), val);
 			return ;
 		}
-        else if (main[mid] < val && ( mid + 1 >= static_cast<int>(main.size()) || main[mid + 1] > val)) {
+        else if (main[mid] <= val && ( mid + 1 >= static_cast<int>(main.size()) || main[mid + 1] >= val)) {
 			// std::cout << "place to insert: " << val << " is: " << main[mid] << std::endl;
 			main.insert(main.begin() + mid + 1, val);
 			return ;
@@ -173,6 +189,14 @@ void    fstInsertToMain(std::vector<int> &jacobNums, std::vector<int> &main, std
 	int	currJ;
 	int	prevJ;
 
+	if (!pend.size())
+		return ;
+	else if (pend.size() == 1)
+		return (fstInsertNum(main, pend.at(0)));
+	fstInsertNum(main, pend.at(0));
+	fstInsertNum(main, pend.at(1));
+	if (pend.size() == 2)
+		return ;
 	for (size_t i = 1; i < jacobNums.size(); i++) {
 		currJ = jacobNums.at(i);
 		prevJ = jacobNums.at(i - 1);

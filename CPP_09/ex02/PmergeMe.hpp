@@ -5,6 +5,8 @@
 #include <deque>
 #include <sstream>
 #include <climits>
+#include <sys/time.h>
+#include <cstdio>
 
 // std::vector container
 void	fstParseArgs(std::vector<std::string> args);

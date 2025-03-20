@@ -1,5 +1,13 @@
 #include "PmergeMe.hpp"
 
+long long	getTime() {
+	struct timeval	tv;
+
+	if (gettimeofday(&tv, NULL))
+		return (-1);
+	return (tv.tv_sec * 1e6 + tv.tv_usec);
+}
+
 int	main(int ac, char **av)
 {
 	if (ac < 2) {
@@ -9,6 +17,7 @@ int	main(int ac, char **av)
 
 	// std::vector container
 	{
+		long long	startTime = getTime();
 		std::vector<std::string>	args(av + 1, av + ac);
 		std::vector<std::pair<int, int> >	nums;
 		std::vector<int>	main;
@@ -18,49 +27,46 @@ int	main(int ac, char **av)
 		try {
 			fstParseArgs(args);
 			fstConvertToInt(nums, args);
+
+			std::cout << "Befor: ";
+			std::vector<std::pair<int, int> >::iterator	pairIt;
+			for (pairIt = nums.begin(); pairIt != nums.end(); pairIt++) {
+				std::cout << pairIt->first << " " << pairIt->second << " ";
+			}
+			std::cout << std::endl;
 			fstSortNums(nums);
-			
-			// std::cout << "----- Befor: -----" << std::endl;
-			// std::vector<std::pair<int, int> >::iterator	it;
-			// for (it = nums.begin(); it != nums.end(); it++) {
-			// 	std::cout << it->first << " " << it->second << " |" << std::endl;
-			// }
+
+
 			fstSortPairs(nums);
+			// std::cout << "33" << std::endl;
 			fstSplitPairs(nums, main, pend);
+
+			// std::cout << ""\n----- pend: -----" << std::endl";
+			// std::vector<int>::iterator	it;
+			// for (it = pend.begin(); it != pend.end(); it++)
+			// std::cout << *it << " ";
+			// std::cout << std::endl;
+
+			// std::cout << "44" << std::endl;
 			fstGenerateJacobNums(jacobNums, pend.size());
+			// std::cout << "55" << std::endl;
 			fstInsertToMain(jacobNums, main, pend);
+			// std::cout << "66" << std::endl;
 		}
 		catch (std::exception &e) {
 			std::cout << e.what() << std::endl;
 			return (1);
 		}
+
+		std::cout << "After: ";
 		std::vector<int>::iterator	it;
 		for (it = main.begin(); it != main.end(); it++)
-		std::cout << *it << " ";
+			std::cout << *it << " ";
 		std::cout << std::endl;
-		// for (it = pend.begin(); it != pend.end(); it++)
-		// std::cout << *it << " ";
-		// std::cout << std::endl;
-		// std::cout << "main.size() = " << main.size() << std::endl;
 
-		// std::cout << "\n----- After: -----" << std::endl;
-		// std::vector<std::pair<int, int> >::iterator pIt;
-		// for (pIt = nums.begin(); pIt != nums.end(); pIt++) {
-		// 	std::cout << pIt->first << " " << pIt->second << " |" << std::endl;
-		// }
-		// std::cout << std::endl;
-		
-		// std::vector<std::pair<int, int> >::iterator	it2;
-		// for (it = nums.begin(); it != nums.end(); it++) {
-		// 	for (it2 = it; it2 != nums.end(); it2++) {
-		// 		if (it->first > it2->first) {
-		// 			std::cout << "Not Sorted" << std::endl;
-		// 			return (1);
-
-		// 		}
-		// 	}
-		// }
-		// std::cout << "Sorted" << std::endl;
+		long long elapsed = getTime() - startTime;
+		std:: cout << "Time to process a range of " << main.size()
+			<< "5 elements with std::vector : " << elapsed << std::endl;
 	}
 
 	//	std::deque container
